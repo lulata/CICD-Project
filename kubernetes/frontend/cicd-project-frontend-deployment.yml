@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cicd-project-frontend-deployment
+  namespace: cicd-project
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cicd-project-frontend
+  template:
+    metadata:
+      labels:
+        app: cicd-project-frontend
+    spec:
+      containers:
+        - name: cicd-project-frontend
+          image: jovan141/product-front:latest
+          ports:
+            - containerPort: 80

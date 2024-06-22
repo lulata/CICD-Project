@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cicd-project-frontend-service
+  namespace: productapp
+spec:
+  selector:
+    app: cicd-project-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
