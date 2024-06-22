@@ -7,17 +7,13 @@ services:
       context: ./frontend
     stdin_open: true
     tty: true
-    networks:
-      - cicd
 
   backend:
     container_name: backend
     build:
       context: ./backend
     volumes:
-      - ./backend:/var/www
-    networks:
-      - cicd
+      - ./backend:/var/www/html
     depends_on:
       - mysql
 
@@ -33,8 +29,6 @@ services:
     depends_on:
       - frontend
       - backend
-    networks:
-      - cicd
 
   mysql:
     image: mysql:8.0
@@ -45,12 +39,6 @@ services:
     volumes:
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
       - mysql_data:/var/lib/mysql
-    networks:
-      - cicd
-
-networks:
-  cicd:
-    driver: bridge
 
 volumes:
   mysql_data:
