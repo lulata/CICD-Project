@@ -35,5 +35,5 @@ spec:
           configMap:
             name: cicd-project-backend-config
             items:
-              - key: APPSETTINGS_JSON
-                path: appsettings.json
+              - key: nginx.conf
+                path: nginx.conf
