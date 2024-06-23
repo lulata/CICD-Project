@@ -6,31 +6,34 @@
   <h1>Notes</h1>
 
   <ul>
-    <li v-for="note in notes" :key="note">{{ note }}</li>
+    <li v-for="note in notes" :key="note.id">{{ note.data }}</li>
   </ul>
-
-  <button @click="getNotes">Get Notes</button>
 </template>
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
-const notes = ref<string[]>();
+const notes = ref<
+  {
+    id: number;
+    data: string;
+  }[]
+>();
 const note = ref<string>('');
 
 onMounted(() => {
-  getNotes;
+  getNotes();
 });
 
 function getNotes() {
-  axios.get('/api/notes').then((response) => {
+  axios.get('http://localhost:8081/api/notes').then((response) => {
     notes.value = response.data;
   });
 }
 
 function addNote() {
-  axios.post('/api/notes', { note: note.value }).then(() => {
+  axios.post('http://localhost:8081/api/notes', { data: note.value }).then(() => {
     getNotes();
     note.value = '';
   });

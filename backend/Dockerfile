@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Set working directory
-WORKDIR /var/www/html
+WORKDIR /var/www/backend
 
 # Copy existing application directory contents
 COPY . .
@@ -24,6 +24,6 @@ COPY . .
 # Install application dependencies
 RUN composer install
 
-# Expose port 9000 and start php-fpm server
+# Expose port 9000
 EXPOSE 9000
 CMD ["php-fpm"]
