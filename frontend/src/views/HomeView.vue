@@ -36,6 +36,7 @@ function addNote() {
   axios.post('http://localhost:8081/api/notes', { data: note.value }).then(() => {
     getNotes();
     note.value = '';
+    console.log('Note added');
   });
 }
 </script>
