@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: cicd-project-frontend
-          image: jovan141/product-front:latest
+          image: lulata/cicd-frontend:latest
           ports:
             - containerPort: 80

@@ -13,7 +13,7 @@ services:
     depends_on:
       - backend
     networks:
-      - app-network
+      - cicd-project
 
   backend:
     container_name: backend
@@ -30,7 +30,7 @@ services:
     volumes:
       - ./backend:/var/www/backend
     networks:
-      - app-network
+      - cicd-project
 
   nginx:
     container_name: nginx
@@ -44,7 +44,7 @@ services:
       - frontend
       - backend
     networks:
-      - app-network
+      - cicd-project
 
   mysql:
     image: mysql:8.0
@@ -57,10 +57,10 @@ services:
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
       - mysql_data:/var/lib/mysql
     networks:
-      - app-network
+      - cicd-project
 
 volumes:
   mysql_data:
 
 networks:
-  app-network:
+  cicd-project:

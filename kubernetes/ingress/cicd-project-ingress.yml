@@ -18,13 +18,13 @@ spec:
                 name: cicd-project-frontend-service
                 port:
                   number: 80
-    - host: productapi.local
+    - host: cicd-project-backend.local
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: productapi-service
+                name: cicd-project-backend-service
                 port:
                   number: 80
