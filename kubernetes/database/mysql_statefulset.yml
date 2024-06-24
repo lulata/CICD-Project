@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mysql
-  namespace: productapp
+  namespace: cicd-project
 spec:
   serviceName: "mysql"
   replicas: 2
